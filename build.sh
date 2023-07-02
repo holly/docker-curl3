@@ -6,6 +6,6 @@ set -o pipefail
 set -C
 
 
-APP=$(basename $PWD)
+APP=$(basename $PWD | sed -e 's/^docker\-//')
 TAG="$USER/$APP"
 docker build -t ${TAG}:latest  .
