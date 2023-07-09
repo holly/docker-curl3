@@ -24,18 +24,22 @@ RUN --mount=type=cache,target=/var/lib/apt/lists --mount=type=cache,target=/var/
  && echo ">>> install ngtcp2" \
  && git clone  https://github.com/ngtcp2/ngtcp2 \
  && cd ngtcp2 \
+ && git checkout v0.16.0 \
  && autoreconf -fi \
  && ./configure PKG_CONFIG_PATH=/usr/local/ssl/lib64/pkgconfig:/usr/local/nghttp3/lib/pkgconfig LDFLAGS="-Wl,-rpath,/usr/local/ssl/lib64" --prefix=/usr/local/ngtcp2 --enable-lib-only \
  && make \
  && make install \
+ #&& cd /usr/local/ngtcp2/lib/pkgconfig \
+ #&& ln -sf libngtcp2_crypto_quictls.pc libngtcp2_crypto_openssl.pc \
  && cd ../ \
  && echo ">>> install nghttp2" \
  && git clone https://github.com/nghttp2/nghttp2.git \
  && cd nghttp2 \
+ && git checkout v1.53.0 \
  && autoreconf -fi \
  && automake \
  && autoconf \
- && ./configure PKG_CONFIG_PATH=/usr/local/ssl/lib64/pkgconfig:/usr/local/ngtcp2/lib/pkgconfig:/usr/local/nghttp3/lib/pkgconfig --prefix=/usr/local/nghttp2 --with-openssl=/usr/local/ssl  --with-libngtcp2=/usr/local/ngtcp2   --with-libnghttp=/usr/local/nghttp3 --enable-http3 \
+ && ./configure PKG_CONFIG_PATH=/usr/local/ssl/lib64/pkgconfig:/usr/local/ngtcp2/lib/pkgconfig:/usr/local/nghttp3/lib/pkgconfig --prefix=/usr/local/nghttp2 --with-openssl=/usr/local/ssl  --with-libngtcp2=/usr/local/ngtcp2   --with-libnghttp3=/usr/local/nghttp3 --enable-http3 \
  && make \
  && make install \
  && cd ../ \
