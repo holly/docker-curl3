@@ -8,4 +8,4 @@ set -C
 
 APP=$(basename $PWD | sed -e 's/^docker\-//')
 TAG="$USER/$APP"
-docker build -t ${TAG}:latest  .
+docker build  -t ${TAG}:latest  .
