@@ -12,6 +12,7 @@ TAG="$USER/$APP"
 SRC=$PWD/tmp
 DST=/data
 
-test -d $SRC &&  rm -fr $SRC
-mkdir $SRC
-docker run --rm --mount type=bind,src=$SRC,dst=$DST -it $TAG:latest $@
+#test -d $SRC &&  rm -fr $SRC
+#mkdir $SRC
+#docker run --rm --mount type=bind,src=$SRC,dst=$DST -it $TAG:latest $@
+docker run --rm  -it $TAG:latest $@
