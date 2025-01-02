@@ -27,7 +27,7 @@ RUN apt update \
   && cd curl \
   && autoreconf -fi \
   && PKG_CONFIG_PATH=$OPENSSL_PREFIX/lib/pkgconfig ./configure --prefix=$CURL3_PREFIX --with-openssl=$OPENSSL_PREFIX --with-openssl-quic --with-brotli --with-zlib --with-nghttp2 --with-nghttp3 --enable-hsts --enable-alt-svc --enable-http-auth --enable-unix-sockets --enable-verbose --enable-http --enable-optimize --enable-get-easy-options --enable-ftp --disable-ldap --disable-rtsp --disable-dict --disable-telnet --disable-tftp --disable-pop3 --disable-imap --disable-smb --disable-smtp --disable-mqtt   --disable-gopher \
-  && make \
+  && make -j$(grep -c processor /proc/cpuinfo) \
   && make install \
   && cd ../
 
