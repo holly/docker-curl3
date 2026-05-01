@@ -66,7 +66,6 @@ RUN apt update \
     ./configure \
       --prefix=$CURL3_PREFIX \
       --with-openssl=$OPENSSL_PREFIX \
-      --with-openssl-quic \
       --with-ngtcp2=$NGTCP2_PREFIX \
       --with-nghttp3 \
       --with-nghttp2 \
