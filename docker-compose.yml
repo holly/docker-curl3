@@ -1,7 +1,7 @@
 services:
   curl3:
     build: .
-    image: holly/curl3:latest
+    image: holly/curl3
     stdin_open: true
     tty: true
     working_dir: /app
