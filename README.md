@@ -60,13 +60,14 @@ docker run --rm -it holly/curl3:latest https://example.com
 | ngtcp2 | 1.23.0-DEV | QUIC implementation |
 | nghttp2 | 1.59.0 | HTTP/2 |
 | nghttp3 | 0.8 | HTTP/3 |
+| libssh2 | 1.11.0 | SSH/SFTP |
 | brotli | 1.1.0 | Compression |
 | zlib | 1.3 | Compression |
 
 ### Supported Protocols
 
 ```
-file ftp ftps http https ipfs ipns ws wss
+file ftp ftps http https ipfs ipns scp sftp ws wss
 ```
 
 ### Supported Features
