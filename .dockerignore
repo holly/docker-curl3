@@ -1,0 +1,14 @@
+.git
+.gitignore
+.gitattributes
+*.md
+README.md
+LICENSE
+.claude/
+.plans/
+tmp/
+*.log
+*.swp
+*.swo
+*~
+.DS_Store

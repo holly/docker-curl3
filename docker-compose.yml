@@ -1,0 +1,10 @@
+services:
+  curl3:
+    build: .
+    image: holly/curl3:latest
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    volumes:
+      - .:/data
+    entrypoint: /usr/local/curl3/bin/curl

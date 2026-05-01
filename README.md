@@ -51,6 +51,24 @@ docker run --rm -it holly/curl3:latest --version
 docker run --rm -it holly/curl3:latest https://example.com
 ```
 
+### Docker Compose
+
+```bash
+# Build and start service
+docker compose build
+
+# Run curl via compose
+docker compose run curl3 --version
+docker compose run curl3 https://example.com
+docker compose run curl3 --http3 https://www.google.com
+docker compose run curl3 -u user:pass sftp://example.com/file.txt
+
+# Cleanup
+docker compose down
+```
+
+Note: Uses `docker compose` (V2). For legacy `docker-compose`, substitute accordingly.
+
 ## Build Contents
 
 | Component | Version | Purpose |
