@@ -60,6 +60,38 @@ docker run --rm -v /path/to/local:/data -it $USER/curl3:latest \
 
 詳細は `.claude/commands/test-http3.md` 参照。
 
+## SSH/SFTP接続
+
+SSH認証でファイルをダウンロード・アップロード：
+
+```bash
+# パスワード認証でSFTPダウンロード
+./run.sh -u user:password sftp://example.com/path/to/file.txt
+
+# 秘密鍵認証でSCPダウンロード
+./run.sh -u user: --key ~/.ssh/id_rsa scp://example.com/~/file.txt
+
+# ディレクトリ一覧表示
+./run.sh sftp://user@example.com/
+
+# SFTPでファイルアップロード
+./run.sh -T local_file.txt sftp://user@example.com/~/uploads/
+
+# 秘密鍵のパスフレーズ指定付き
+./run.sh -u user: --key ~/.ssh/id_rsa --pass "passphrase" \
+  scp://example.com/~/file.txt -o sftp
+
+# 詳細出力付き接続
+./run.sh -v -u user:password sftp://example.com/
+```
+
+注：
+- `-u user:password`: パスワード認証
+- `-u user:`: パスワード認証（対話的プロンプト）
+- `--key ~/.ssh/id_rsa`: 秘密鍵ファイルのパス
+- `-T`: ファイルアップロード
+- `-O`: ファイルダウンロード（明示的指定）
+
 ## 環境変数の指定
 
 ```bash

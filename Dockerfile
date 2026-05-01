@@ -58,6 +58,7 @@ RUN apt update \
     libbrotli-dev zlib1g-dev \
     libnghttp2-dev libnghttp3-dev \
     libpsl-dev libcunit1-dev \
+    libssh2-1-dev \
  && git clone https://github.com/curl/curl \
  && cd curl \
  && autoreconf -fi \
@@ -71,6 +72,7 @@ RUN apt update \
       --with-nghttp2 \
       --with-brotli \
       --with-zlib \
+      --with-libssh2 \
       --enable-http3 \
       --enable-hsts \
       --enable-alt-svc \
@@ -115,6 +117,7 @@ RUN apt update \
     libnghttp2-14 \
     libnghttp3-3 \
     libpsl5t64 \
+    libssh2-1 \
  && echo "$OPENSSL_PREFIX/lib64" >> /etc/ld.so.conf.d/openssl.conf \
  && echo "$NGTCP2_PREFIX/lib" >> /etc/ld.so.conf.d/ngtcp2.conf \
  && echo "$CURL3_PREFIX/lib" >> /etc/ld.so.conf.d/curl3.conf \
