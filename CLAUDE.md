@@ -10,8 +10,8 @@
 
 - **ビルド**: Docker、Dockerfile、autoconf、bash
 - **コア依存**: OpenSSL（QUIC対応）、ngtcp2、nghttp2、nghttp3
-- **プロトコル**: HTTP/3、HTTP/2、HTTP/1.1、FTP
-- **追加機能**: brotli圧縮、zlib、HSTS、AltSvc、Unixソケット
+- **プロトコル**: HTTP/3、HTTP/2、HTTP/1.1、FTP、SSH、SFTP
+- **追加機能**: brotli圧縮、zlib、HSTS、AltSvc、Unixソケット、libssh2
 
 ## クイックスタート
 
@@ -19,6 +19,10 @@
 ./build.sh              # Dockerイメージをビルド
 ./run.sh --version      # コンテナからcurlを実行
 ./curl https://...      # シンボリックリンク経由のショートカット
+
+# Docker Compose経由
+docker compose run curl3 --version          # バージョン確認
+docker compose run curl3 --http3 https://...  # HTTP/3テスト
 ```
 
 ## アーキテクチャと開発ガイド
@@ -38,4 +42,5 @@
 
 ## 最近の作業
 
-ngtcp2によるHTTP/3サポート追加（コミット26709f9）。
+libssh2によるSSH/SFTPサポート追加（コミット c855dbd）、Docker Compose対応（18af90c）、
+--with-openssl-quicフラグ削除（83fefd5）。
